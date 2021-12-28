@@ -5,7 +5,7 @@ exports.run = async (client, message, args) => {
         let embed = new Discord.MessageEmbed()
         .setTitle("Reload")
         .setDescription("Bu komutu sadece sahibim kullanabilir..")
-        .setColor("#cdf785");
+        .setColor("#ff0000");
         if(message.author.id !== ayarlar.sahip) return message.channel.send(embed);
 
         if(!args[0].toLowerCase()) return message.channel.send("Bir komut ismi gir!")

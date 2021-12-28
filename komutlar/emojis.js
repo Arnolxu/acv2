@@ -17,7 +17,7 @@ exports.run = async(client, msg, args) => {
         }
         try {     
   let botembed = new Discord.MessageEmbed()
-            .setColor(`RANDOM`)
+            .setColor(`#ff0000`)
             .setDescription(staticEmotes + animEmotes)
             .setAuthor(`${msg.guild.name} Sunucusu Emojileri`, msg.guild.iconURL())
     .setFooter('Bu komutu kullanan kullanıcı ' + msg.author.tag, msg.author.avatarURL())
@@ -26,7 +26,7 @@ exports.run = async(client, msg, args) => {
       } catch (err) {
         const embed = new Discord.MessageEmbed()
             .addField(`Sunucuda Bulunan Emojiler`, 'Üzgünüm ama sunucunuzda ya çok fazla emoji bulunuyor ya da hiç emoji bulunmuyor. Bunları gösteremiyorum. Discord buna izin vermiyor.')
-            .setColor('RED')
+            .setColor('#ff0000')
           .setFooter('Bu komutu kullanan kullanıcı ' + msg.author.tag, msg.author.avatarURL())
             .setTimestamp()
         msg.channel.send(embed)

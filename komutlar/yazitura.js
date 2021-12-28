@@ -16,7 +16,7 @@ exports.run = async (client, message, args) => {
     let embed = new Discord.MessageEmbed()
     .setTitle("Yazitura")
     .setDescription(cevap)
-    .setColor("#cdf785");
+    .setColor("#ff0000");
 	message.channel.send(embed);
 		
 

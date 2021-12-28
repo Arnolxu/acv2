@@ -13,7 +13,7 @@ exports.run = (client, message, args) => {
         .setTitle("Kayit")
         .setDescription(`${user} adli uye basariyla kaydedildi!`)
         .setFooter(`${message.author.username} tarafindan kaydedildi.`, message.author.avatarURL)
-        .setColor("#cdf785")
+        .setColor("#ff0000")
         .setTimestamp();
     message.channel.send(embed);
 };
