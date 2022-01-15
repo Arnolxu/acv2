@@ -8,9 +8,9 @@ exports.run = async (client, message, args) => {
         .setColor("#ff0000");
         if(message.author.id !== ayarlar.sahip) return message.channel.send(embed);
 
-        if(!args[0].toLowerCase()) return message.channel.send("Bir komut ismi gir!")
+        if(!args[0]) return message.channel.send("Bir komut ismi gir!")
 
-        let komutİsim = args[0].toLowerCase()
+        let komutİsim = args[0]
 
         try {
           
