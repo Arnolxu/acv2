@@ -11,24 +11,24 @@ exports.run = (client, message, args) => {
 
   if (!user) return message.reply('**Kimi kayit edecegini belirt!**').catch(console.error);
   user.roles.add(rol); // Member
-  
-   const embed = new Discord.MessageEmbed()
-        .setTitle("Kayit")
-        .setDescription(`${user} adli uye basariyla kaydedildi!`)
-        .setFooter(`${message.author.username} tarafindan kaydedildi.`, message.author.avatarURL)
-        .setColor("#ff0000")
-        .setTimestamp();
-    message.channel.send(embed);
+
+  const embed = new Discord.MessageEmbed()
+    .setTitle("Kayit")
+    .setDescription(`${user} adli uye basariyla kaydedildi!`)
+    .setFooter(`${message.author.username} tarafindan kaydedildi.`, message.author.avatarURL)
+    .setColor("#ff0000")
+    .setTimestamp();
+  message.channel.send(embed);
 };
 
 exports.conf = {
-aliases: ['kayit', 'k'],
-permLevel: 0, 
-kategori: 'Sunucu'
+  aliases: ['kayit', 'k'],
+  permLevel: 0,
+  kategori: 'Sunucu'
 };
 
 exports.help = {
-  name: 'kayit', 
+  name: 'kayit',
   description: 'Uyeyi kaydeder.',
   usage: 'kayit @Uye <m/e>'
 };

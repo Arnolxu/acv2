@@ -1,35 +1,35 @@
 const Discord = require('discord.js');
 
 const cevaplar = [
-	"tura",
-	"yazi"
+    "tura",
+    "yazi"
 ];
 
 exports.run = async (client, message, args) => {
-	var cevap = cevaplar[Math.floor(Math.random() * cevaplar.length)];
-    if(args[0] == cevap) {
+    var cevap = cevaplar[Math.floor(Math.random() * cevaplar.length)];
+    if (args[0] == cevap) {
         cevap = "Attim ve **" + cevap + "** geldi, yani kazandin.";
     } else {
         cevap = "Attim ve **" + cevap + "** geldi, yani kazanamadin.";
     }
 
     let embed = new Discord.MessageEmbed()
-    .setTitle("Yazitura")
-    .setDescription(cevap)
-    .setColor("#ff0000");
-	message.channel.send(embed);
-		
+        .setTitle("Yazitura")
+        .setDescription(cevap)
+        .setColor("#ff0000");
+    message.channel.send(embed);
 
-};  
+
+};
 
 exports.conf = {
-aliases: ['yazitura'],
-permLevel: 0, 
-kategori: 'Eglence'
+    aliases: ['yazitura'],
+    permLevel: 0,
+    kategori: 'Eglence'
 };
 
 exports.help = {
-  name: 'yazitura', 
-  description: 'Yazı-tura atar.',
-  usage: 'yazitura'
+    name: 'yazitura',
+    description: 'Yazı-tura atar.',
+    usage: 'yazitura'
 };

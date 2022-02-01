@@ -15,10 +15,10 @@ client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 fs.readdir("./komutlar/", (err, files) => {
   if (err) console.error(err);
-  log(`${files.length} komut yüklenecek.`);
+  log(`${files.length} komut`);
   files.forEach(f => {
     let props = require(`./komutlar/${f}`);
-    log(`Yüklenen komut: ${props.help.name}.`);
+    log(`${props.help.name} yuklendi`);
     client.commands.set(props.help.name, props);
     props.conf.aliases.forEach(alias => {
       client.aliases.set(alias, props.help.name);
@@ -76,28 +76,28 @@ client.unload = command => {
 
 client.on('ready', () => {
 
-  // Oynuyor Kısmı
-  
-      var actvs = [
-        `${prefix}help | ${client.guilds.cache.size} sunucu`,
-        `${prefix}help | ${client.users.cache.size} uye`, 
-        `${prefix}help`
-    ];
-    
+  // Oynuyor Kismi
+
+  var actvs = [
+    `${prefix}help | ${client.guilds.cache.size} sunucu`,
+    `${prefix}help | ${client.users.cache.size} uye`,
+    `${prefix}help`
+  ];
+
+  client.user.setActivity(actvs[Math.floor(Math.random() * (actvs.length - 1) + 1)], { type: 'PLAYING' });
+  setInterval(() => {
     client.user.setActivity(actvs[Math.floor(Math.random() * (actvs.length - 1) + 1)], { type: 'PLAYING' });
-    setInterval(() => {
-        client.user.setActivity(actvs[Math.floor(Math.random() * (actvs.length - 1) + 1)], { type: 'PLAYING'});
-    }, 15000);
-    
-  
-      console.log ('-----------------------------------------');
-      console.log (`| Kullanıcı İsmi     | ${client.user.username}`);
-      console.log (`| Sunucular          | ${client.guilds.cache.size}`);
-      console.log (`| Kullanıcılar       | ${client.users.cache.size}`);
-      console.log (`| Prefix             | ${ayarlar.prefix}`);
-      console.log ('-----------------------------------------');
-    
-    });
+  }, 15000);
+
+
+  console.log('-----------------------------------------');
+  console.log(`| Kullanici Adi      | ${client.user.username}`);
+  console.log(`| Sunucular          | ${client.guilds.cache.size}`);
+  console.log(`| Kullanicilar       | ${client.users.cache.size}`);
+  console.log(`| Prefix             | ${ayarlar.prefix}`);
+  console.log('-----------------------------------------');
+
+});
 
 
 client.elevation = message => {
