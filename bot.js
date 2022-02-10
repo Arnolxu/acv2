@@ -1,18 +1,18 @@
 const Discord = require('discord.js');
 const client = new Discord.Client({ disableMentions: 'everyone' });
-const ayarlar = require('./ayarlar.json');
+const { sahip, token } = require('./ayarlar.json');
 const fs = require('fs');
 const moment = require('moment');
 require('./util/eventLoader')(client);
 
-var prefix = ayarlar.prefix;
 
-const log = message => {
+const log = message => 
   console.log(`[${moment().format('YYYY-MM-DD HH:mm:ss')}] ${message}`);
-};
+
 
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
+
 fs.readdir("./komutlar/", (err, files) => {
   if (err) console.error(err);
   log(`${files.length} komut`);
@@ -25,6 +25,7 @@ fs.readdir("./komutlar/", (err, files) => {
     });
   });
 });
+
 client.reload = command => {
   return new Promise((resolve, reject) => {
     try {
@@ -74,41 +75,14 @@ client.unload = command => {
   });
 };
 
-client.on('ready', () => {
-
-  // Oynuyor Kismi
-
-  var actvs = [
-    `${prefix}help | ${client.guilds.cache.size} sunucu`,
-    `${prefix}help | ${client.users.cache.size} uye`,
-    `${prefix}help`
-  ];
-
-  client.user.setActivity(actvs[Math.floor(Math.random() * (actvs.length - 1) + 1)], { type: 'PLAYING' });
-  setInterval(() => {
-    client.user.setActivity(actvs[Math.floor(Math.random() * (actvs.length - 1) + 1)], { type: 'PLAYING' });
-  }, 15000);
-
-
-  console.log('-----------------------------------------');
-  console.log(`| Kullanici Adi      | ${client.user.username}`);
-  console.log(`| Sunucular          | ${client.guilds.cache.size}`);
-  console.log(`| Kullanicilar       | ${client.users.cache.size}`);
-  console.log(`| Prefix             | ${ayarlar.prefix}`);
-  console.log('-----------------------------------------');
-
-});
-
-
 client.elevation = message => {
-  if (!message.guild) {
-    return;
-  }
+  if (message.channel.type !== "text") return;
+  
   let permlvl = 0;
   if (message.member.hasPermission("BAN_MEMBERS")) permlvl = 2;
   if (message.member.hasPermission("ADMINISTRATOR")) permlvl = 3;
-  if (message.author.id === ayarlar.sahip) permlvl = 4;
+  if (message.author.id === sahip) permlvl = 4;
   return permlvl;
 };
 
-client.login(ayarlar.token);
+client.login(token);
